@@ -23,8 +23,7 @@ jobs:
       run: dotnet publish -c Release -o release
 
     - name: Rewrite base-href
-      run: |
-        sed -i 's/<base href="\/" \/>/<base href="\/Demo.BlazorWasmApp\/" \/>/g' release/wwwroot/index.html
+      run: sed -i 's|<base href=".*" />|<base href="/Demo.BlazorWasmApp/" />|g' release/wwwroot/index.html
 
     - name: Add .nojekyll
       run: touch release/wwwroot/.nojekyll
